@@ -1,9 +1,11 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController {
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
+    private negociacoes = new Negociacoes();
 
     constructor() {
         this.inputData = document.querySelector('#data');
@@ -13,7 +15,11 @@ export class NegociacaoController {
 
     adicona(): void  {
         const negociacao = this.criaNegociacao();
-        console.log(negociacao);
+        negociacao.data.setDate(12) //
+
+        this.negociacoes.adiciona(negociacao);
+        this.negociacoes.lista() // pop() não funciona porque utilizei spreedOperators
+        console.log(this.negociacoes.lista())
         this.limparFormulario();
     }
 
