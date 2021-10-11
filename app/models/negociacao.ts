@@ -22,7 +22,7 @@ export class Negociacao {
     get data(): Date {
         // getTime(): retorna a data em milissegundo
         const data = new Date(this._data.getTime());
-        return this.data
+        return this._data
     }
 }
 
