@@ -1,7 +1,6 @@
-export class NegociacoesView {
-    constructor(seletor) {
-        this.elemento = document.querySelector(seletor);
-    }
+import { View } from './view.js';
+// utiliza o extends para pegar a propriedades do pai (herança)
+export class NegociacoesView extends View {
     // o método template serve para declarar o template da view
     template(model) {
         return `
@@ -19,7 +18,7 @@ export class NegociacoesView {
                             <tr>
                                 // Intl: internacionalization. Vai chamr uma instância dele
                                 // como se uma classe que tem vários métodos estáticos.
-                                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                                <td>${this.formatar(negociacao.data)}</td>
                                 <td>${negociacao.quantidade}</td>
                                 <td>${negociacao.valor}</td>
                             </tr>
@@ -30,10 +29,9 @@ export class NegociacoesView {
             </table>
         `;
     }
-    // o método update serve para renderizar esse template 
-    update(model) {
-        const template = this.template(model);
-        console.log(template);
-        this.elemento.innerHTML = template;
+    // TODO: Intl: internacionalization. Vai chamr uma instância dele
+    // como se uma classe que tem vários métodos estáticos.
+    formatar(data) {
+        return new Intl.DateTimeFormat().format(data);
     }
 }

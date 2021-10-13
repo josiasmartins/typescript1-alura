@@ -24,5 +24,16 @@ export class Negociacao {
         const data = new Date(this._data.getTime());
         return this._data
     }
+
+    // TODO static: todo o método static é o método que posso chamar diretamente da classe
+    // posso acessar diretamente na classe, sem precisar criar uma instância dela
+    public static criaDe(dateString: string, quantidadeString: string, valorString: string   ): Negociacao {
+        // expressão regular
+        const exp = /-/g
+        const date = new Date(dateString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
+    }
 }
 

@@ -18,4 +18,13 @@ export class Negociacao {
         const data = new Date(this._data.getTime());
         return this._data;
     }
+    // TODO static: todo o método static é o método que posso chamar diretamente da classe
+    criaDe(dateString, quantidadeString, valorString) {
+        // expressão regular
+        const exp = /-/g;
+        const date = new Date(dateString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
+    }
 }
