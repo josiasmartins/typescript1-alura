@@ -9,7 +9,7 @@ export class NegociacaoController {
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacoesView('#negociacoesView');
+    private negociacoesView = new NegociacoesView('#negociacoesView', true);
     private mensagemView = new MensagemView('#mensagemView');
     // readonly: semonte leitura
 
@@ -23,7 +23,7 @@ export class NegociacaoController {
     }
 
     public adicona(): void  {
-        const negociacao = new Negociacao.criaDe(
+        const negociacao = Negociacao.criaDe(
             this.inputData.value,
             this.inputQuantidade.value,
             this.inputValor.value

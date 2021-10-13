@@ -5,15 +5,23 @@ import { Negociacoes } from "../models/negociacoes.js";
 export abstract class View<T> {
     // protected: modificador de acesso. Só ele tem acesso a esse elemento, mas minhas filhas pode tocar
     protected elemento: HTMLElement;
+    private escapar = false;
 
-    constructor(seletor: string) {
+    // TODO: opcionais não funciona no primeiro parâmetro
+    constructor(seletor: string, escapar?: boolean) {
         this.elemento = document.querySelector(seletor);
+        if (escapar) {
+            this.escapar = escapar;
+        }
     }
 
        // o método update serve para renderizar esse template 
        public update(model: T): void {
-            const template = this.template(model);
-            console.log(template);
+            let template = this.template(model);
+            if (this.escapar) {
+                // expressão regular: remove todo mundo 
+                template = template.replace(/<script>[\s\S]*?<\|<\/script>/, '');
+            }
             this.elemento.innerHTML = template;  
        };
 

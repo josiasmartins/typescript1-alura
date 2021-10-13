@@ -7,7 +7,7 @@ export class NegociacaoController {
     // readonly: semonte leitura
     constructor() {
         this.negociacoes = new Negociacoes();
-        this.negociacoesView = new NegociacoesView('#negociacoesView');
+        this.negociacoesView = new NegociacoesView('#negociacoesView', true);
         this.mensagemView = new MensagemView('#mensagemView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector("#quantidade");
@@ -17,7 +17,7 @@ export class NegociacaoController {
         this.negociacoesView;
     }
     adicona() {
-        const negociacao = new Negociacao(null, 0, 0).criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
+        const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView.update('Apenas negociações em dias úteis são aceitas');
             return;

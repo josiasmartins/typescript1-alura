@@ -19,7 +19,8 @@ export class Negociacao {
         return this._data;
     }
     // TODO static: todo o método static é o método que posso chamar diretamente da classe
-    criaDe(dateString, quantidadeString, valorString) {
+    // posso acessar diretamente na classe, sem precisar criar uma instância dela
+    static criaDe(dateString, quantidadeString, valorString) {
         // expressão regular
         const exp = /-/g;
         const date = new Date(dateString.replace(exp, ','));
