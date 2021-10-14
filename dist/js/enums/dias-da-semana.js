@@ -1,9 +1,3 @@
-// enums: enumeration;
-/**
- *      ENUM
- *          - uma enum é nome space, na qual você pode definir valores de constante
- *          - Valores que nunca vão mudar
- */
 export var DiaDaSemana;
 (function (DiaDaSemana) {
     DiaDaSemana[DiaDaSemana["DOMINGO"] = 0] = "DOMINGO";

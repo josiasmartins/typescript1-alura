@@ -4,7 +4,6 @@ import { NegociacoesView } from './../views/negociacoes-view.js';
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 export class NegociacaoController {
-    // readonly: semonte leitura
     constructor() {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#negociacoesView', true);
@@ -12,7 +11,6 @@ export class NegociacaoController {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
-        // this.negociacoesView.template(model);
         this.negociacoesView.update(this.negociacoes);
         this.negociacoesView;
     }
@@ -22,9 +20,7 @@ export class NegociacaoController {
             this.mensagemView.update('Apenas negociações em dias úteis são aceitas');
             return;
         }
-        // negociacao.data.setDate(12) //
         this.negociacoes.adiciona(negociacao);
-        // this.negociacoes.lista() // pop() não funciona porque utilizei spreedOperators
         console.log(this.negociacoes.lista());
         this.limparFormulario();
         this.atualizarView();

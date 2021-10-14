@@ -5,24 +5,28 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController {
-    private inputData: HTMLInputElement;
-    private inputQuantidade: HTMLInputElement;
-    private inputValor: HTMLInputElement;
+    private inputData: HTMLInputElement | null;
+    private inputQuantidade: HTMLInputElement | null;
+    private inputValor: HTMLInputElement | null;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView', true);
     private mensagemView = new MensagemView('#mensagemView');
     // readonly: semonte leitura
 
     constructor() {
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector("#quantidade");
-        this.inputValor = document.querySelector("#valor");
+        // as: fez um cache
+        this.inputData = <HTMLInputElement>document.querySelector('#data'); // outra forma de fazer: as HTMLInputElement;
+        this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
+        this.inputValor = document.querySelector("#valor") as HTMLInputElement;
         // this.negociacoesView.template(model);
         this.negociacoesView.update(this.negociacoes);
         this.negociacoesView
     }
 
     public adicona(): void  {
+        /**
+         *  Zé, você já viu isso?
+         */
         const negociacao = Negociacao.criaDe(
             this.inputData.value,
             this.inputQuantidade.value,

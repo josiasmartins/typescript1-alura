@@ -1,7 +1,5 @@
 import { View } from './view.js';
-// utiliza o extends para pegar a propriedades do pai (herança)
 export class NegociacoesView extends View {
-    // o método template serve para declarar o template da view
     template(model) {
         return `
             <table class="table table-hover table-bordered">
@@ -29,8 +27,6 @@ export class NegociacoesView extends View {
             </table>
         `;
     }
-    // TODO: Intl: internacionalization. Vai chamr uma instância dele
-    // como se uma classe que tem vários métodos estáticos.
     formatar(data) {
         return new Intl.DateTimeFormat().format(data);
     }
