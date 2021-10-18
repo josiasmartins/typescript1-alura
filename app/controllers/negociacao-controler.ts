@@ -5,17 +5,19 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController {
-    private inputData: HTMLInputElement | null;
-    private inputQuantidade: HTMLInputElement | null;
-    private inputValor: HTMLInputElement | null;
+    private inputData: HTMLInputElement;
+    private inputQuantidade: HTMLInputElement;
+    private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacoesView('#negociacoesView', true);
+    private negociacoesView = new NegociacoesView('#negociacoesView', true); // TODO: coloquei o x na View
     private mensagemView = new MensagemView('#mensagemView');
     // readonly: semonte leitura
 
     constructor() {
-        // as: fez um cache
-        this.inputData = <HTMLInputElement>document.querySelector('#data'); // outra forma de fazer: as HTMLInputElement;
+        // as: fez um casting; fazendo uma tronsformação do resultado
+        // as: ele converte para um Dado que ele garante que existe; forçando a mudança do tipo
+        // temos duas formas de forçar a mudança do tipo: as ou <HTMLElement>;
+        this.inputData = <HTMLInputElement>document.querySelector('#data'); // outra forma de fazer o as:  <HTMlElement>;
         this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
         this.inputValor = document.querySelector("#valor") as HTMLInputElement;
         // this.negociacoesView.template(model);

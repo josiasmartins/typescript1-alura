@@ -9,9 +9,15 @@ export abstract class View<T> {
 
     // TODO: opcionais não funciona no primeiro parâmetro
     constructor(seletor: string, escapar?: boolean) {
-        this.elemento = document.querySelector(seletor);
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            // as: diz que ele é um HTMLElement. Fazer um cache
+            this.elemento = elemento as HTMLElement
+        } else {
+            throw Error(`Seletor não existe no DOM. Verifique`);
+        }
         if (escapar) {
-            this.escapar = escapar;
+            this.escapar = escapar
         }
     }
 

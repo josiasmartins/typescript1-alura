@@ -4,6 +4,7 @@ import { View } from "./views/view.js";
 
 const controller = new NegociacaoController();
 const form = document.querySelector('.form');
+// form é nulo, então tem que fazer um check
 if (form) {
     form.addEventListener('submit', event => {
         // preventDefault: não deixa que a página recarregue toda hora
